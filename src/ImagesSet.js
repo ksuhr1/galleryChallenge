@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
+import './ImagesSet.css';
 import {createApi} from 'unsplash-js';
 
 const unsplash = createApi({ accessKey: `${process.env.REACT_APP_ACCESSKEY}` });
@@ -14,7 +14,21 @@ const imageStyle = {
     borderRadius: '5px',
     width:'100%',
     marginTop:'10px',
-    fontSize:'20px'
+    fontSize:'20px',
+    transform: 'translate3d(0,0,0)',
+    opacity: 1,
+    transition: 'transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1), opacity 500ms'
+   
+}
+
+const assetLoaded = {
+    transform: 'translate3d(0,0,0)',
+    opacity: 1,
+    transition: 'transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1), opacity 500ms'
+}
+
+const disableTransition = {
+    transition: 'none',
 }
 
 const buttonStyle = {
@@ -78,21 +92,21 @@ const ImagesSet = () => {
             <div style={columnStyle}>
                 {colA.map((img, i) => {
                     return(
-                        <img key={i} style={imageStyle} src={img.urls.regular}/>
+                        <img key={i} className="fadeInn one" src={img.urls.regular}/>
                     )
                 })}
             </div>
             <div style={columnStyle}>
                 {colB.map((img, i) => {
                     return(
-                        <img key={i} style={imageStyle} src={img.urls.regular}/>
+                        <img key={i} className="fadeInn three" src={img.urls.regular}/>
                     )
                 })}
             </div>
             <div style={columnStyle}>
                 {colC.map((img, i) => {
                     return(
-                        <img key={i} style={imageStyle} src={img.urls.regular}/>
+                        <img key={i} className="fadeInn two" src={img.urls.regular}/>
                     )
                 })}
             </div>
